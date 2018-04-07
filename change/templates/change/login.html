@@ -1,0 +1,15 @@
+{% extends 'change/base.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+  {% endif %}
+  <form action="{% url 'change:login'%}" method="post">
+      {% csrf_token %}
+      Username: <input id="id_username" maxlength="30" name="username" type="text" ><br><br>
+      Password:<input id="id_password" maxlength="30" name="password" type="password"><br><br>
+      <button type="submit">Login</button>
+  </form><br><br>
+  Don't have an account? <a href="{% url 'change:register' %}">Click here</a> to register.
+{% endblock %}

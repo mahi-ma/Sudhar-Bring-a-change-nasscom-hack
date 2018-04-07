@@ -1,0 +1,10 @@
+{% extends 'change/base.html' %}
+
+{% block content %}
+    <div class="post">
+        <h1>{{ complaint.c_name }}</h1>
+        <h2>{{complaint.c_id}}</h2>
+        <h2>{{ complaint.date }}</h2>
+        <h2>{{ complaint.directed_to }}</h2>
+	</div>
+{% endblock %}

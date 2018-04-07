@@ -1,0 +1,11 @@
+{% extends 'change/base.html' %}
+
+{% block content %}
+	{% for complaint in complaints %}
+		<div class="post">
+			<div class="date">
+			</div>
+			<h1><a href="{% url 'change:complaint_details' pk=complaint.pk %}">{{ complaint.c_name }}</a></h1>
+		</div>
+	{% endfor %}
+{% endblock %}
