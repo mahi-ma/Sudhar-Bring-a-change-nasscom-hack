@@ -5,6 +5,7 @@ app_name = 'change'
 
 urlpatterns = [
     url(r'^$', views.start_page, name='start_page'),
+    url(r'^welcome/$', views.welcome_page, name='welcome'),
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.login_user, name='login'),
     url(r'^logout/$', views.logout_user, name='logout'),

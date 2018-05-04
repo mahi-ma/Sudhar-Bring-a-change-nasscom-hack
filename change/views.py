@@ -13,7 +13,12 @@ def start_page(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('change:home_page'))
     else:
-      return HttpResponseRedirect(reverse('change:login'))
+      return HttpResponseRedirect(reverse('change:welcome'))
+
+
+def welcome_page(request):
+    return render(request, 'change/welcome_page.html')
+
 
 
 def register(request):
@@ -52,8 +57,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    form = RegisterForm(request.POST or None)
-    return render(request, 'change/login.html', {'form': form})
+    return render(request, 'change/welcome_page.html')
 
 
 def home_page(request):
@@ -65,7 +69,7 @@ def complaint_new(request):
        form = ComplaintForm(request.POST)
        if form.is_valid():
            complaint = form.save(commit=False)
-           complaint.c_id = random.randint(1,101)
+           complaint.c_id = random.randint(1, 101)
            complaint.date = time.strftime("%d/%m/%Y")
            complaint.save()
            return redirect('change:complaint_details', pk=complaint.pk)
@@ -82,6 +86,6 @@ def complaint_list(request):
 
 def complaint_details(request, pk):
     complaint = get_object_or_404(Complaint, pk=pk)
-    return render(request, 'change/complaint_details.html', {'complaint' : complaint})
+    return render(request, 'change/complaint_details.html', {'complaint': complaint})
 
 

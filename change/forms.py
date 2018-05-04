@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class ComplaintForm(forms.ModelForm):
     class Meta:
         model = Complaint
-        fields = ('c_name',)
+        fields = ('c_name', 'c_category', 'directed_to',)
 
 
 class RegisterForm(UserCreationForm):
